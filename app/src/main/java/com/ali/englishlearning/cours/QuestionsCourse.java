@@ -50,7 +50,6 @@ public class QuestionsCourse extends AppCompatActivity {
     private String coursePath;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -272,7 +271,6 @@ public class QuestionsCourse extends AppCompatActivity {
     }
 
 
-
     public void playAudio(String audioPath) {
         try {
             stopAudio();
@@ -286,11 +284,6 @@ public class QuestionsCourse extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
-
-
-
-
 
 
     private void stopAudio() {
@@ -330,21 +323,15 @@ public class QuestionsCourse extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int i) {
 
-                    if (fAuth.getCurrentUser() != null) {
-                        startActivity(new Intent(getApplicationContext(), CoursList.class));
-                        finish();
-                    }else{
-                        startActivity(new Intent(QuestionsCourse.this, Login.class));
-                        finish();
-                    }
+                    startActivity(new Intent(getApplicationContext(), CoursList.class));
+                    finish();
+
 
                 }
             });
             materialAlertDialogBuilder.show();
         }
     };
-
-
 
 
 }

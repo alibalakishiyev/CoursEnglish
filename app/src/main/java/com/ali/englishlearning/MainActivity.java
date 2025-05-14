@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.Toast;
@@ -16,15 +15,13 @@ import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.ali.englishlearning.User.EditProfile;
 import com.ali.englishlearning.authenticator.Login;
 import com.ali.englishlearning.authenticator.Register;
-import com.ali.englishlearning.cours.QuestionsCourse;
 import com.ali.englishlearning.main.MainPage;
+import com.ali.englishlearning.stt.SpeechToText;
+import com.ali.englishlearning.vosk.VoskActivity;
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -38,7 +35,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageButton btnCours,menuButton;
+    private ImageButton btnCours,menuButton,btnExample;
     private AdView mAdView;
     private InterstitialAd mInterstitialAd;
     private long lastAdShownTime = 0; // Son reklamın göstərildiyi vaxt (millisaniyə ilə)
@@ -59,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         menuButton = findViewById(R.id.menu_button);
+        btnExample = findViewById(R.id.btnExample);
 
 
 
@@ -67,6 +65,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, MainPage.class);
              startActivity(intent);
+            }
+        });
+
+        btnExample.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SpeechToText.class);
+                startActivity(intent);
             }
         });
 
@@ -206,10 +212,8 @@ public class MainActivity extends AppCompatActivity {
             materialAlertDialogBuilder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int i) {
+                    finish();
 
-                    if (fAuth.getCurrentUser() != null) {
-                        finish();
-                    }
 
                 }
             });
