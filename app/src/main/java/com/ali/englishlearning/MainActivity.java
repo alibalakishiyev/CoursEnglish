@@ -21,7 +21,6 @@ import com.ali.englishlearning.authenticator.Login;
 import com.ali.englishlearning.authenticator.Register;
 import com.ali.englishlearning.main.MainPage;
 import com.ali.englishlearning.stt.SpeechToText;
-import com.ali.englishlearning.vosk.VoskActivity;
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
