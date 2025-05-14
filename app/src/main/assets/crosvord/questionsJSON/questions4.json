@@ -1,0 +1,38 @@
+{
+  "across": [
+    {
+      "position": 1,
+      "question": "Türkiyənin paytaxtı",
+      "answer": "ANKARA"
+    },
+    {
+      "position": 2,
+      "question": "Bitki cinsi",
+      "answer": "ZANBAQ"
+    },
+    {
+      "position": 4,
+      "question": "Sıx",
+      "answer": "DAR"
+    }
+
+  ],
+  "down": [
+    {
+      "position": 1,
+      "question": "Kişi adı",
+      "answer": "AZAD"
+    },
+    {
+      "position": 3,
+      "question": "Yaradıcı",
+      "answer": "AQİL"
+    },
+    {
+      "position": 5,
+      "question": "Türkcə qardaş",
+      "answer": "ABI"
+    }
+
+  ]
+}

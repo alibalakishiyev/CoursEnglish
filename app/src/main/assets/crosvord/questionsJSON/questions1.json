@@ -1,0 +1,166 @@
+{
+  "across": [
+    {
+      "position": 1,
+      "question": "İstanbulun əvvəlki adı",
+      "answer": "Konstantinopol"
+    },
+    {
+      "position": 3,
+      "question": "1951-ci ildə istehsal olunmuş məşhur Hindistan filmi",
+      "answer": "Avare"
+    },
+    {
+      "position": 4,
+      "question": "Alim, mütəfəkkir",
+      "answer": "Filosof"
+    },
+    {
+      "position": 5,
+      "question": "Qədim yunan və Roma dinlərində işıq və incəsənət allahı",
+      "answer": "Apollon"
+    },
+    {
+      "position": 7,
+      "question": "Göy cisimlərini öyrənən mütəxəssis",
+      "answer": "Astronom"
+    },
+    {
+      "position": 8,
+      "question": "Təktanrılıqla bağlı nəzəriyyə",
+      "answer": "Monoteizm"
+    },
+    {
+      "position": 13,
+      "question": "Tütün çəkmə vasitəsi",
+      "answer": "Siqaret"
+    },
+    {
+      "position": 14,
+      "question": "Kəskin",
+      "answer": "Itiuclu"
+    },
+    {
+      "position": 16,
+      "question": "Görkəmli fransız yazıçı-dramaturqu Onore de ...",
+      "answer": "Balzak"
+    },
+    {
+      "position": 19,
+      "question": "Bir işin mütəmadi davam edilən mərhələsi",
+      "answer": "Proses"
+    },
+    {
+      "position": 20,
+      "question": "Nitq hissəsi",
+      "answer": "Fel"
+    },
+    {
+      "position": 21,
+      "question": "Həqiqətə uyğun olmayan ifadə",
+      "answer": "Yalan"
+    },
+    {
+      "position": 23,
+      "question": "Dördüncü not",
+      "answer": "Fa"
+    },
+    {
+      "position": 24,
+      "question": "Ləpir",
+      "answer": "Iz"
+    },
+    {
+      "position": 25,
+      "question": "Musiqi janrı",
+      "answer": "Repp"
+    },
+    {
+      "position": 26,
+      "question": "Defisi xatırladan, lakin defistən həcmcə daha böyük olan durğu işarəsi",
+      "answer": "Tire"
+    },
+    {
+      "position": 29,
+      "question": "Cəsur, qoçaq",
+      "answer": "Igid"
+    },
+    {
+      "position": 30,
+      "question": "Fəsil",
+      "answer": "Yay"
+    },
+    {
+      "position": 31,
+      "question": "Hər tərəfi su ilə əhatə olunmuş torpaq sahəsi",
+      "answer": "Ada"
+    }
+  ],
+  "down": [
+    {
+      "position": 1,
+      "question": "ABŞ-ın ən böyük ştatı",
+      "answer": "Alyaska"
+    },
+    {
+      "position": 2,
+      "question": "Qan xəstəliyi",
+      "answer": "Leukemiya"
+    },
+    {
+      "position": 6,
+      "question": "Elektrik ötürücüsü",
+      "answer": "Kabel"
+    },
+    {
+      "position": 9,
+      "question": "Kimyəvi elementlərin dövri sistemində 10-cu element",
+      "answer": "Neon"
+    },
+    {
+      "position": 10,
+      "question": "Rusiya Federasiyasında şəhər",
+      "answer": "OMSK"
+    },
+    {
+      "position": 11,
+      "question": "Dalğavari işarə",
+      "answer": "Tilda"
+    },
+    {
+      "position": 12,
+      "question": "Hər hansı bir dildə və ya dialektdə işlədilən sözlərin məcmusu",
+      "answer": "Lüğət"
+    },
+    {
+      "position": 15,
+      "question": "Səma cisminin hərəkət yolu",
+      "answer": "Orbit"
+    },
+    {
+      "position": 17,
+      "question": "İkiləpəlilər sinfinə aid bitki cinsi",
+      "answer": "Fasulye"
+    },
+    {
+      "position": 18,
+      "question": "Şimal-qərbi yarımqrupa daxil olan İran dillərindən biri",
+      "answer": "Kürd"
+    },
+    {
+      "position": 22,
+      "question": "Simli musiqi aləti",
+      "answer": "Gitara"
+    },
+    {
+      "position": 27,
+      "question": "Zevsin oğlu",
+      "answer": "Herkul"
+    },
+    {
+      "position": 28,
+      "question": "Vokal əsər növü",
+      "answer": "Aria"
+    }
+  ]
+}

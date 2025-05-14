@@ -1,0 +1,88 @@
+{
+  "lesson": "Elementary Ders 3",
+  "level": "A1",
+  "source": "Wordismo - İngilizce Kelime uygulaması (Seçkin Esen)",
+  "targetWords": [
+    {
+      "word": "borrow",
+      "meaning": "borc almaq",
+      "example": "I often borrow my father’s car."
+    },
+    {
+      "word": "boss",
+      "meaning": "rəis",
+      "example": "My boss is a hardworking person."
+    },
+    {
+      "word": "bottle",
+      "meaning": "butulka",
+      "example": "There is some water in the bottle."
+    },
+    {
+      "word": "box",
+      "meaning": "qutu",
+      "example": "This box is heavy. I can’t carry it."
+    },
+    {
+      "word": "brave",
+      "meaning": "cəsur",
+      "example": "My father is a brave man."
+    },
+    {
+      "word": "bread",
+      "meaning": "çörək",
+      "example": "I usually eat bread during meals."
+    },
+    {
+      "word": "break",
+      "meaning": "sındırmaq",
+      "example": "Don’t touch the vase! You will break it."
+    },
+    {
+      "word": "bridge",
+      "meaning": "körpü",
+      "example": "There is a huge bridge in my city."
+    },
+    {
+      "word": "brush",
+      "meaning": "fırça, fırçalamaq",
+      "example": "I brush my teeth every day."
+    },
+    {
+      "word": "build",
+      "meaning": "tikmək, inşa etmək",
+      "example": "I am planning to build my own house."
+    }
+  ],
+  "readingPractice": "My boss is a brave man. He sometimes takes risks and borrows money from other companies. With that money, our company builds bridges in the city.",
+  "otherWords": [
+    { "word": "often", "meaning": "tez-tez" },
+    { "word": "father", "meaning": "ata" },
+    { "word": "car", "meaning": "maşın" },
+    { "word": "hardworking", "meaning": "zəhmətkeş" },
+    { "word": "person", "meaning": "insan" },
+    { "word": "some", "meaning": "bir az" },
+    { "word": "water", "meaning": "su" },
+    { "word": "heavy", "meaning": "ağır" },
+    { "word": "carry", "meaning": "daşımaq" },
+    { "word": "man", "meaning": "kişi" },
+    { "word": "usually", "meaning": "adətən" },
+    { "word": "eat", "meaning": "yemək yemək" },
+    { "word": "during", "meaning": "-boyunca" },
+    { "word": "meal", "meaning": "yemək (növbəsi)" },
+    { "word": "touch", "meaning": "toxunmaq" },
+    { "word": "vase", "meaning": "vazo" },
+    { "word": "huge", "meaning": "böyük" },
+    { "word": "city", "meaning": "şəhər" },
+    { "word": "teeth", "meaning": "dişlər" },
+    { "word": "every", "meaning": "hər" },
+    { "word": "day", "meaning": "gün" },
+    { "word": "plan", "meaning": "planlaşdırmaq" },
+    { "word": "own", "meaning": "öz" },
+    { "word": "house", "meaning": "ev" },
+    { "word": "sometimes", "meaning": "bəzən" },
+    { "word": "take risk", "meaning": "risk etmək" },
+    { "word": "money", "meaning": "pul" },
+    { "word": "company", "meaning": "şirkət" }
+  ]
+}

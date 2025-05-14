@@ -1,0 +1,91 @@
+{
+  "lesson": "Elementary Ders 4",
+  "level": "A1",
+  "source": "Wordismo",
+  "targetWords": [
+    {
+      "word": "butter",
+      "meaning": "kərə yağı",
+      "example": "I like butter because it is delicious."
+    },
+    {
+      "word": "calculator",
+      "meaning": "hesablayıcı",
+      "example": "I use a calculator to calculate my salary."
+    },
+    {
+      "word": "calendar",
+      "meaning": "təqvim",
+      "example": "Look at the calendar to see today’s date."
+    },
+    {
+      "word": "call",
+      "meaning": "zəng etmək (telefonla)",
+      "example": "I call my mother on the phone every day."
+    },
+    {
+      "word": "capital",
+      "meaning": "paytaxt",
+      "example": "London is the capital of England."
+    },
+    {
+      "word": "carpenter",
+      "meaning": "dülgər",
+      "example": "Carpenters make furniture."
+    },
+    {
+      "word": "carpet",
+      "meaning": "xalça",
+      "example": "I like sitting on the carpet."
+    },
+    {
+      "word": "carry",
+      "meaning": "daşımaq",
+      "example": "I can’t carry this box because it is too heavy."
+    },
+    {
+      "word": "cartoon",
+      "meaning": "cizgi filmi",
+      "example": "My daughter likes watching cartoons."
+    },
+    {
+      "word": "chair",
+      "meaning": "stul",
+      "example": "There are three chairs in this room."
+    }
+  ],
+  "readingPractice": "My brother is a carpenter. He makes furniture such as chairs and tables. He lives in the capital city. Yesterday I called him on the phone. I asked him to carry my carpets with his car.",
+  "otherWords": [
+    { "word": "like", "meaning": "xoşlamaq, sevmək" },
+    { "word": "because", "meaning": "çünki" },
+    { "word": "delicious", "meaning": "dadlı" },
+    { "word": "use", "meaning": "istifadə etmək" },
+    { "word": "calculate", "meaning": "hesablamaq" },
+    { "word": "salary", "meaning": "maaş" },
+    { "word": "look at", "meaning": "baxmaq" },
+    { "word": "see", "meaning": "görmək" },
+    { "word": "today", "meaning": "bu gün" },
+    { "word": "date", "meaning": "tarix" },
+    { "word": "mother", "meaning": "ana" },
+    { "word": "phone", "meaning": "telefon" },
+    { "word": "every", "meaning": "hər" },
+    { "word": "day", "meaning": "gün" },
+    { "word": "London", "meaning": "London" },
+    { "word": "England", "meaning": "İngiltərə" },
+    { "word": "make", "meaning": "hazırlamaq, düzəltmək" },
+    { "word": "furniture", "meaning": "mebel" },
+    { "word": "sit", "meaning": "oturmaq" },
+    { "word": "box", "meaning": "qutu" },
+    { "word": "heavy", "meaning": "ağır" },
+    { "word": "daughter", "meaning": "qız övlad" },
+    { "word": "watch", "meaning": "izləmək" },
+    { "word": "room", "meaning": "otaq" },
+    { "word": "brother", "meaning": "qardaş" },
+    { "word": "table", "meaning": "masa" },
+    { "word": "live", "meaning": "yaşamaq" },
+    { "word": "city", "meaning": "şəhər" },
+    { "word": "yesterday", "meaning": "dünən" },
+    { "word": "ask", "meaning": "soruşmaq" },
+    { "word": "car", "meaning": "maşın" }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "lesson": "Elementary Ders 5",
+  "level": "A1",
+  "source": "Wordismo",
+  "targetWords": [
+    {
+      "word": "cheap",
+      "meaning": "ucuz",
+      "example": "Are there any cheap restaurants around here?"
+    },
+    {
+      "word": "cheese",
+      "meaning": "pendir",
+      "example": "It's easy to cut cheese with a knife."
+    },
+    {
+      "word": "cherry",
+      "meaning": "gilas",
+      "example": "This cherry is dark red."
+    },
+    {
+      "word": "chicken",
+      "meaning": "toyuq",
+      "example": "I like roast chicken."
+    },
+    {
+      "word": "clean",
+      "meaning": "təmizləmək",
+      "example": "Tom doesn't want to clean his room."
+    },
+    {
+      "word": "clear",
+      "meaning": "aydın, açıq",
+      "example": "These photos are very clear."
+    },
+    {
+      "word": "clever",
+      "meaning": "ağıllı",
+      "example": "Thomas is a clever boy because he can solve math problems."
+    },
+    {
+      "word": "clock",
+      "meaning": "saat (divar və ya masa)",
+      "example": "The sound of the clock was annoying."
+    },
+    {
+      "word": "cloud",
+      "meaning": "bulud",
+      "example": "The sky is blue and there is no cloud now."
+    },
+    {
+      "word": "coat",
+      "meaning": "palto",
+      "example": "Wear your coat. It's cold today."
+    }
+  ],
+  "readingPractice": "Yesterday I ate cheese and bread for breakfast. Then, I cleaned my house and went out. The air was clear and there were no clouds. However, it was cold, so I put on my coat.",
+  "otherWords": [
+    { "word": "restaurant", "meaning": "restoran" },
+    { "word": "around", "meaning": "ətrafında" },
+    { "word": "here", "meaning": "burada" },
+    { "word": "easy", "meaning": "asan" },
+    { "word": "cut", "meaning": "kəsmək" },
+    { "word": "knife", "meaning": "bıçaq" },
+    { "word": "dark", "meaning": "tünd, qaranlıq" },
+    { "word": "red", "meaning": "qırmızı" },
+    { "word": "roast", "meaning": "qızardılmış" },
+    { "word": "want", "meaning": "istəmək" },
+    { "word": "room", "meaning": "otaq" },
+    { "word": "photo", "meaning": "şəkil" },
+    { "word": "solve", "meaning": "həll etmək" },
+    { "word": "problem", "meaning": "problem, məsələ" },
+    { "word": "sound", "meaning": "səs" },
+    { "word": "annoying", "meaning": "əsəbi, narahatedici" },
+    { "word": "sky", "meaning": "səma" },
+    { "word": "blue", "meaning": "göy, mavi" },
+    { "word": "now", "meaning": "indi" },
+    { "word": "yesterday", "meaning": "dünən" },
+    { "word": "eat", "meaning": "yemək (fe'l)" },
+    { "word": "bread", "meaning": "çörək" },
+    { "word": "breakfast", "meaning": "səhər yeməyi" },
+    { "word": "house", "meaning": "ev" },
+    { "word": "go out", "meaning": "çölə çıxmaq" },
+    { "word": "air", "meaning": "hava" },
+    { "word": "however", "meaning": "lakin" },
+    { "word": "cold", "meaning": "soyuq" },
+    { "word": "put on", "meaning": "geyinmək" }
+  ]
+}

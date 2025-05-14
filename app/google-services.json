@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "3354971154",
+    "project_id": "englishlearning-10c80",
+    "storage_bucket": "englishlearning-10c80.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:3354971154:android:1a0bc7ff96ff194ff89ccb",
+        "android_client_info": {
+          "package_name": "com.ali.englishlearning"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0DVBieid7J1o6DwmFPuQJxFnAD1cmZFM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

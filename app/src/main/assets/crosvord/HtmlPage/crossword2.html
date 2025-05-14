@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şifrə Daxil Etmə</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 100vh;
+            width: 110vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            padding: 10px;
+
+            background-image: url("bacgroundHtml.jpeg"); /* şəkil adını uyğun dəyiş */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        #result {
+            margin-top: 15px;
+            font-size: 18px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        /* Bəzi stil tənzimləmələri */
+        puzzle-clues ul {
+            list-style-type: none;
+        }
+
+        puzzle-clues li {
+            margin: 5px 0;
+        }
+
+
+        td {
+            padding: 2px;
+            text-align: center;
+            position: relative;
+        }
+
+        input {
+            width: 25px;
+            height: 25px;
+            font-size: 15px;
+            text-align: center;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            transition: border 0.3s ease-in-out;
+        }
+
+        input:focus {
+          border-color: #007bff;
+          outline: none;
+        }
+
+
+        input.error {
+          border-color: red;
+        }
+
+        input:disabled {
+          background-color: #e0e0e0;
+          cursor: not-allowed;
+        }
+
+        span {
+            position: absolute;
+            top: 35%;
+            left: 5px; /* Sol tərəfi biraz daha yaxınlaşdırdım */
+            transform: translateY(-70%);
+            font-size: 12px;
+            color: #f44336;
+        }
+
+        .inputs-container {
+            display: flex; /* Yana yerləşdirmək üçün flex istifadə etdik */
+            justify-content: center;
+            align-items: center;
+            gap: 10px; /* İki element arasındakı boşluq */
+        }
+
+        .inputs-container p {
+            margin: 0; /* `p` elementinin marginini sıfırladıq ki, aralarındakı boşluq olmasın */
+        }
+
+
+        td:hover {
+          background-color: #f1f1f1;
+        }
+
+
+
+        td input {
+          color: black; /* Hərf rəngi */
+          background-color: white; /* Hüceyrə fon rəngi */
+          text-align: center; /* Mərkəzə yerləşdirmək */
+          font-size: 20px; /* Font ölçüsü */
+        }
+
+        td input[readonly] {
+           background-color: lightgray; /* Dəyişdirilə bilməyən hüceyrələrin fonu */
+        }
+
+    </style>
+
+</head>
+<body>
+
+<script>
+
+    let writingDirection = 'H';
+
+    let selectedCell = {
+    row: null,
+    col: null,
+    direction: 'H',
+    number: null
+};// Hüceyrəyə kliklədikdə
+function cellClicked(row, col) {
+    const cell = document.querySelector(`td[data-coords="${row},${col}"]`);
+    if (!cell) return;
+
+    selectedCell = {
+        row,
+        col,
+        direction: selectedCell.direction,
+        number: cell.querySelector('span')?.textContent || "1"
+    };
+
+    if (window.Android && window.Android.onCellClick) {
+        window.Android.onCellClick(row, col, selectedCell.number, selectedCell.direction);
+    }
+}
+
+// Cari hüceyrə koordinatlarını qaytarır
+function getCurrentCellCoords() {
+    return [selectedCell.row, selectedCell.col];
+}
+
+function setWritingDirection(direction) {
+    writingDirection = direction;
+    if (window.Android) {
+        window.Android.onDirectionChanged(direction);
+    }
+}
+
+// Hərf əlavə etmə funksiyası
+function insertLetter(letter) {
+    const cell = document.querySelector(`td[data-coords="${selectedCell.row},${selectedCell.col}"] input`);
+    if (cell) {
+        cell.value = letter.toUpperCase();
+        moveToNextCell();
+    }
+    return getCurrentCellCoords();
+}
+function clearCurrentCell() {
+    const cell = document.querySelector(`td[data-coords="${selectedCell.row},${selectedCell.col}"] input`);
+    if (cell) {
+        cell.value = '';
+        moveToPreviousCell();
+    }
+}
+
+// Növbəti hüceyrəyə keçid
+function moveToNextCell() {
+    if (!selectedCell) return;
+
+    const nextRow = writingDirection === 'V' ? selectedCell.row + 1 : selectedCell.row;
+    const nextCol = writingDirection === 'H' ? selectedCell.col + 1 : selectedCell.col;
+
+    const nextCell = document.querySelector(`td[data-coords="${nextRow},${nextCol}"]`);
+    if (nextCell && nextCell.querySelector('input')) {
+        selectedCell.row = nextRow;
+        selectedCell.col = nextCol;
+        nextCell.querySelector('input').focus();
+    }
+}
+
+function moveToPreviousCell() {
+    if (!selectedCell) return;
+
+    const prevRow = writingDirection === 'V' ? selectedCell.row - 1 : selectedCell.row;
+    const prevCol = writingDirection === 'H' ? selectedCell.col - 1 : selectedCell.col;
+
+    const prevCell = document.querySelector(`td[data-coords="${prevRow},${prevCol}"]`);
+    if (prevCell && prevCell.querySelector('input')) {
+        selectedCell.row = prevRow;
+        selectedCell.col = prevCol;
+        prevCell.querySelector('input').focus();
+    }
+}
+
+// Hərf təyin edərkən dialoqu bağlamaq
+window.setLetterFromAndroid = function(letter) {
+    if (!selectedCell) return;
+
+    const cell = document.querySelector(`td[data-coords="${selectedCell.row},${selectedCell.col}"] input`);
+    if (cell) {
+        cell.value = letter.toUpperCase();
+        moveToNextCell();
+
+        // Android-ə dialoqu bağlamağı söylə
+        if (window.Android && window.Android.closeDialog) {
+            window.Android.closeDialog();
+        }
+    }
+};
+//sile sile geri qayitmaq
+    window.setLetterFromAndroid = function(letter) {
+            if (!selectedCell) return;
+
+            const cell = document.querySelector(`td[data-coords="${selectedCell.row},${selectedCell.col}"] input`);
+            if (cell) {
+                cell.value = letter.toUpperCase();
+                moveToNextCell();
+
+                // Android-ə dialoqu bağlamağı söylə
+                if (window.Android && window.Android.closeDialog) {
+                    window.Android.closeDialog();
+                }
+            }
+        };
+        //sile sile geri qayitmaq
+        window.clearSelectedCell = function(moveBackward) {
+        if (!selectedCell) return;
+
+        const cell = document.querySelector(`td[data-coords="${selectedCell.row},${selectedCell.col}"] input`);
+        if (cell) {
+            cell.value = ''; // Əvvəlcə cari hüceyrəni sil
+        }
+
+        if (moveBackward) {
+            let prevRow = selectedCell.row;
+            let prevCol = selectedCell.col;
+
+            if (writingDirection === 'V' && prevRow > 0) {
+                prevRow -= 1;
+            } else if (writingDirection === 'H' && prevCol > 0) {
+                prevCol -= 1;
+            }
+
+            const prevCell = document.querySelector(`td[data-coords="${prevRow},${prevCol}"]`);
+            if (prevCell && prevCell.querySelector('input')) {
+                selectedCell.row = prevRow;
+                selectedCell.col = prevCol;
+
+                const prevInput = prevCell.querySelector('input');
+                prevInput.focus();
+
+                if (window.Android && window.Android.onCellClick) {
+                    window.Android.onCellClick(
+                        prevRow,
+                        prevCol,
+                        prevCell.querySelector('span')?.textContent || "1",
+                        writingDirection
+                    );
+                }
+            }
+        }
+    };
+
+
+// Səhifə yükləndikdə
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('td').forEach(td => {
+        td.addEventListener('click', function() {
+            const coords = this.dataset.coords.split(',').map(Number);
+            cellClicked(coords[0], coords[1]);
+        });
+    });
+
+    // İlk hüceyrəni fokusla
+    const firstInput = document.querySelector('td[data-coords="1,1"] input');
+    if (firstInput) firstInput.focus();
+
+    if (window.Android && window.Android.onPageLoaded) {
+        window.Android.onPageLoaded();
+    }
+});
+
+function loadQuestions(jsonFile) {
+    fetch(jsonFile)
+        .then(response => response.json())
+        .then(data => {
+            initCrossword(data);
+        })
+        .catch(error => {
+            console.error('JSON yüklənmədi:', error);
+            // Default sualları yüklə
+            fetch('questionsJSON/questions2.json')
+                .then(response => response.json())
+                .then(data => {
+                    initCrossword(data);
+                });
+        });
+}
+
+
+</script>
+
+<script>
+
+    // Crossword Data
+    const crosswordData = {
+      across: [
+        { position: 1, answer: "AZƏRBAYCAN" },
+        { position: 2, answer: "REVMATİZM" },
+        { position: 5, answer: "AVTOVAĞZAL" },
+        { position: 7, answer: "SAHƏ" },
+        { position: 8, answer: "ANCAQ" },
+        { position: 11, answer: "PLAN" },
+        { position: 14, answer: "TULA" },
+        { position: 16, answer: "NEFT" },
+        { position: 17, answer: "PERU" },
+        { position: 19, answer: "MUSA" },
+        { position: 21, answer: "TON" },
+      ],
+      down: [
+        { position: 1, answer: "ATROPATENA" },
+        { position: 3, answer: "İNSAN" },
+        { position: 4, answer: "ƏNVƏR" },
+        { position: 6, answer: "CAZ" },
+        { position: 9, answer: "ANNA" },
+        { position: 10, answer: "ŞƏRQ" },
+        { position: 12, answer: "MEH" },
+        { position: 13, answer: "AZ" },
+        { position: 15, answer: "LİFT" },
+        { position: 18, answer: "SAİPA" },
+        { position: 20, answer: "RAM" },
+      ]
+    };
+
+    // Crossword Manager
+    const CrosswordManager = {
+      storageKey: 'crosswordProgress2',
+      currentState: {},
+
+      init() {
+        this.setupStyles();
+        this.setupEventListeners();
+        this.loadProgress();
+        this.setupAutoSave();
+        this.addControlButtons();
+      },
+
+      setupStyles() {
+        const styleId = 'crossword-dynamic-styles';
+        if (!document.getElementById(styleId)) {
+          const style = document.createElement('style');
+          style.id = styleId;
+          style.textContent = `
+            .correct {
+              color: #2e7d32 !important;
+              font-weight: bold !important;
+              background-color: #e8f5e9 !important;
+            }
+            .incorrect {
+              color: #c62828 !important;
+              background-color: #ffebee !important;
+            }
+            .active-cell {
+              background-color: #fffde7 !important;
+            }
+            .active-word {
+              background-color: #e8f5e9 !important;
+            }
+          `;
+          document.head.appendChild(style);
+        }
+      },
+
+      setupEventListeners() {
+         document.querySelectorAll('#crossword input').forEach(input => {
+           input.addEventListener('input', (e) => {
+             this.saveProgress();
+             this.highlightCurrentCell(e.target);
+               // Yazı yazılan zaman heç bir rəng dəyişikliyi olmasın
+             e.target.classList.remove('correct', 'incorrect');
+
+                // 1-ci sualın avtomatik yaşıl olmasını qarşısını alırıq
+             const td = e.target.closest('td');
+             if (td) {
+                const entryClasses = Array.from(td.classList).filter(c => c.startsWith('entry-'));
+                if (entryClasses.some(ec => ec === 'entry-1' || ec === 'entry-1-down')) {
+                  e.target.classList.remove('correct');
+                }
+             }
+           });
+
+           input.addEventListener('focus', (e) => {
+             this.highlightCurrentCell(e.target);
+           });
+         });
+      },
+
+      highlightCurrentCell(input) {
+        document.querySelectorAll('#crossword input').forEach(i => {
+          i.classList.remove('active-cell', 'active-word');
+        });
+
+        input.classList.add('active-cell');
+
+        const td = input.closest('td');
+        if (td) {
+          const entryClasses = Array.from(td.classList).filter(c => c.startsWith('entry-'));
+          entryClasses.forEach(entryClass => {
+            document.querySelectorAll(`.${entryClass} input`).forEach(cell => {
+              cell.classList.add('active-word');
+            });
+          });
+        }
+      },
+
+      saveProgress() {
+        try {
+          const progress = {};
+          document.querySelectorAll('td[data-coords] input').forEach(input => {
+            const coords = input.closest('td').getAttribute('data-coords');
+            progress[coords] = input.value || '';
+          });
+
+          this.currentState = {...this.currentState, ...progress};
+          localStorage.setItem(this.storageKey, JSON.stringify(this.currentState));
+        } catch (error) {
+          console.error('Save error:', error);
+        }
+      },
+
+      loadProgress() {
+         try {
+            const saved = localStorage.getItem(this.storageKey);
+            if (saved) {
+               this.currentState = JSON.parse(saved) || {};
+               Object.entries(this.currentState).forEach(([coords, value]) => {
+                 const input = document.querySelector(`td[data-coords="${coords}"] input`);
+                 if (input) {
+                   input.value = value;
+                     // Burada avtomatik rəngləməni dayandırırıq
+                   input.classList.remove('correct', 'incorrect');
+                 }
+               });
+            }
+         } catch (error) {
+            console.error('Load error:', error);
+            this.currentState = {};
+         }
+      },
+
+       // Clear saved progress
+      clearCurrentProgress() {
+        if (confirm('Bütün cavablar silinəcək. Əminsiniz?')) {
+          localStorage.removeItem(this.storageKey);
+          document.querySelectorAll('#crossword input').forEach(input => {
+            input.value = '';
+            input.classList.remove('correct');
+          });
+        }
+      },
+
+      setupAutoSave() {
+        if (!this.autoSaveInterval) {
+          this.autoSaveInterval = setInterval(() => this.saveProgress(), 5000);
+        }
+      },
+
+    checkAnswers() {
+         // Əvvəlki rənglənmələri təmizləyirik
+         document.querySelectorAll('#crossword input').forEach(input => {
+            input.classList.remove('correct', 'incorrect');
+         });
+
+         let allCorrect = true;
+
+             // Across (üfüqi) cavabları yoxlayırıq
+         crosswordData.across.forEach(clue => {
+            const cells = this.getClueCells(clue.position);
+            const userAnswer = cells.map(cell => cell.value || '').join('');
+            const isCorrect = this.normalizeString(userAnswer) === this.normalizeString(clue.answer);
+
+            if (isCorrect) {
+               cells.forEach(cell => {
+                  cell.classList.add('correct');
+               });
+            } else {
+              allCorrect = false;
+            }
+         });
+
+         // Down (şaquli) cavabları yoxlayırıq
+         crosswordData.down.forEach(clue => {
+             const cells = this.getClueCells(clue.position);
+             const userAnswer = cells.map(cell => cell.value || '').join('');
+             const isCorrect = this.normalizeString(userAnswer) === this.normalizeString(clue.answer);
+
+             if (isCorrect) {
+                cells.forEach(cell => {
+                   cell.classList.add('correct');
+                });
+             } else {
+               allCorrect = false;
+             }
+         });
+
+         // Proqressi yadda saxlayırıq
+         this.saveProgress();
+
+         if (allCorrect) {
+            this.playSuccessSound();
+            alert('Təbriklər! Bütün cavablar doğrudur!');
+         }
+    },
+
+      getClueCells(position) {
+        return Array.from(document.querySelectorAll(`.entry-${position} input`));
+      },
+
+      normalizeString(str) {
+        return String(str || '').toUpperCase()
+          .replace(/Ğ/g, 'G')
+          .replace(/Ü/g, 'U')
+          .replace(/Ş/g, 'S')
+          .replace(/İ/g, 'I')
+          .replace(/Ə/g, 'E')
+          .replace(/Ö/g, 'O')
+          .replace(/Ç/g, 'C');
+      },
+
+      playSuccessSound() {
+        try {
+          const audio = new Audio('sounds/bingo.mp3');
+          audio.play().catch(e => console.log('Audio error:', e));
+        } catch (error) {
+          console.error('Sound error:', error);
+        }
+      },
+
+      addControlButtons() {
+        const container = document.querySelector('.container');
+
+        const checkButton = document.createElement('button');
+        checkButton.textContent = 'Cavabları Yoxla';
+        checkButton.className = 'check-button';
+        checkButton.style.cssText = `
+          margin: 10px;
+          padding: 8px 16px;
+          background: #388e3c;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        `;
+        checkButton.addEventListener('click', () => this.checkAnswers());
+        container.appendChild(checkButton);
+
+        const clearBtn = document.createElement('button');
+        clearBtn.textContent = 'Təmizlə';
+        clearBtn.style.cssText = `
+          margin: 10px;
+          padding: 8px 16px;
+          background: #f44336;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        `;
+        clearBtn.addEventListener('click', () => this.clearCurrentProgress());
+        container.appendChild(clearBtn);
+      }
+    };
+
+    // Initialize when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      CrosswordManager.init();
+    });
+
+</script>
+
+
+<div class="grid-area scrollable noselect" aria-hidden="true" style="width: 390px; top: 0px;">
+    <div class="crossword-and-footer" style="padding-top: 5px; padding-bottom: 5px;">
+        <div class="crossword horizontally-centered" style="">
+            <div class="box empty box-wnh-70 box-right-edge box-bottom-edge box-left-edge box-top-edge box-wnh-80 box-wnh-60">
+                <div class="error-wrong-letter-bg"></div>
+            </div>
+            <div class="box empty box-wnh-70 box-right-edge box-bottom-edge box-top-edge box-wnh-80 box-wnh-60"
+                 style="width: 70px; height: 70px;">
+                <div class="error-wrong-letter-bg"></div>
+            </div>
+            <div class="box letter box-wnh-70 box-right-edge box-bottom-edge box-top-edge hilited-box-with-focus box-wnh-80 box-wnh-60"
+                 style="width: 70px; height: 70px;">
+                <div class="error-wrong-letter-bg"></div>
+                <span class="cluenum-in-box" style="font-size: 20px;">1‍</span><span
+                    class="letter-in-box" style="font-size: 42px;"> </span></div>
+            <div class="box letter box-wnh-70 box-right-edge box-bottom-edge box-top-edge hilited-box box-wnh-80 box-wnh-60"
+                 style="width: 70px; height: 70px;">
+                <div class="error-wrong-letter-bg"></div>
+                <span class="cluenum-in-box" style="font-size: 20px;">2‍</span><span
+                    class="letter-in-box" style="font-size: 42px;"> </span></div>
+            <div class="box letter box-wnh-70 box-right-edge box-bottom-edge box-top-edge hilited-box box-wnh-80 box-wnh-60"
+                 style="width: 70px; height: 70px;">
+                <div class="error-wrong-letter-bg"></div>
+                <span class="cluenum-in-box" style="font-size: 20px;">3‍</span><span
+                    class="letter-in-box" style="font-size: 42px;"> </span></div>
+            <div class="endRow"></div>
+            <div class="box empty box-wnh-70 box-right-edge box-bottom-edge box-left-edge box-wnh-80 box-wnh-60"
+                 style="width: 70px; height: 70px;">
+                <div class="error-wrong-letter-bg"></div>
+            </div>
+            <div class="box letter box-wnh-70 box-right-edge box-bottom-edge box-wnh-80 box-wnh-60"
+                 style="width: 70px; height: 70px;">
+                <div class="error-wrong-letter-bg"></div>
+                <span class="cluenum-in-box" style="font-size: 20px;">4‍</span><span
+                    class="letter-in-box" style="font-size: 42px;"> </span></div>
+            <div class="box letter box-wnh-70 box-right-edge box-bottom-edge box-wnh-80 box-wnh-60"
+                 style="width: 70px; height: 70px;">
+                <div class="error-wrong-letter-bg"></div>
+                <span class="letter-in-box" style="font-size: 42px;"> </span></div>
+            <div class="box letter box-wnh-70 box-right-edge box-bottom-edge box-wnh-80 box-wnh-60"
+                 style="width: 70px; height: 70px;">
+                <div class="error-wrong-letter-bg"></div>
+                <span class="letter-in-box" style="font-size: 42px;"> </span></div>
+            <div class="box letter box-wnh-70 box-right-edge box-bottom-edge box-wnh-80 box-wnh-60"
+                 style="width: 70px; height: 70px;">
+                <div class="error-wrong-letter-bg"></div>
+                <span class="letter-in-box" style="font-size: 42px;"> </span></div>
+            <div class="endRow"></div>
+            <div class="box letter box-wnh-70 box-right-edge box-bottom-edge box-left-edge box-wnh-80 box-wnh-60"
+                 style="width: 70px; height: 70px;">
+                <div class="error-wrong-letter-bg"></div>
+                <span class="cluenum-in-box" style="font-size: 20px;">5‍</span><span
+                    class="letter-in-box" style="font-size: 42px;"> </span></div>
+            <div class="box letter box-wnh-70 box-right-edge box-bottom-edge box-wnh-80 box-wnh-60"
+                 style="width: 70px; height: 70px;">
+                <div class="error-wrong-letter-bg"></div>
+                <span class="letter-in-box" style="font-size: 42px;"> </span></div>
+            <div class="box letter box-wnh-70 box-right-edge box-bottom-edge box-wnh-80 box-wnh-60"
+                 style="width: 70px; height: 70px;">
+                <div class="error-wrong-letter-bg"></div>
+                <span class="letter-in-box" style="font-size: 42px;"> </span></div>
+            <div class="box letter box-wnh-70 box-right-edge box-bottom-edge box-wnh-80 box-wnh-60"
+                 style="width: 70px; height: 70px;">
+                <div class="error-wrong-letter-bg"></div>
+                <span class="letter-in-box" style="font-size: 42px;"> </span></div>
+            <div class="box letter box-wnh-70 box-right-edge box-bottom-edge box-wnh-80 box-wnh-60"
+                 style="width: 70px; height: 70px;">
+                <div class="error-wrong-letter-bg"></div>
+                <span class="letter-in-box" style="font-size: 42px;"> </span></div>
+            <div class="endRow"></div>
+            <div class="box letter box-wnh-70 box-right-edge box-bottom-edge box-left-edge box-wnh-80 box-wnh-60"
+                 style="width: 70px; height: 70px;">
+                <div class="error-wrong-letter-bg"></div>
+                <span class="cluenum-in-box" style="font-size: 20px;">6‍</span><span
+                    class="letter-in-box" style="font-size: 42px;"> </span></div>
+            <div class="box letter box-wnh-70 box-right-edge box-bottom-edge box-wnh-80 box-wnh-60"
+                 style="width: 70px; height: 70px;">
+                <div class="error-wrong-letter-bg"></div>
+                <span class="letter-in-box" style="font-size: 42px;"> </span></div>
+            <div class="box letter box-wnh-70 box-right-edge box-bottom-edge box-wnh-80 box-wnh-60"
+                 style="width: 70px; height: 70px;">
+                <div class="error-wrong-letter-bg"></div>
+                <span class="letter-in-box" style="font-size: 42px;"> </span></div>
+            <div class="box letter box-wnh-70 box-right-edge box-bottom-edge box-wnh-80 box-wnh-60"
+                 style="width: 70px; height: 70px;">
+                <div class="error-wrong-letter-bg"></div>
+                <span class="letter-in-box" style="font-size: 42px;"> </span></div>
+            <div class="box letter box-wnh-70 box-right-edge box-bottom-edge box-wnh-80 box-wnh-60"
+                 style="width: 70px; height: 70px;">
+                <div class="error-wrong-letter-bg"></div>
+                <span class="letter-in-box" style="font-size: 42px;"> </span></div>
+            <div class="endRow"></div>
+            <div class="box letter box-wnh-70 box-right-edge box-bottom-edge box-left-edge box-wnh-80 box-wnh-60"
+                 style="width: 70px; height: 70px;">
+                <div class="error-wrong-letter-bg"></div>
+                <span class="cluenum-in-box" style="font-size: 20px;">7‍</span><span
+                    class="letter-in-box" style="font-size: 42px;"> </span></div>
+            <div class="box letter box-wnh-70 box-right-edge box-bottom-edge box-wnh-80 box-wnh-60"
+                 style="width: 70px; height: 70px;">
+                <div class="error-wrong-letter-bg"></div>
+                <span class="letter-in-box" style="font-size: 42px;"> </span></div>
+            <div class="box letter box-wnh-70 box-right-edge box-bottom-edge box-wnh-80 box-wnh-60"
+                 style="width: 70px; height: 70px;">
+                <div class="error-wrong-letter-bg"></div>
+                <span class="letter-in-box" style="font-size: 42px;"> </span></div>
+            <div class="box letter box-wnh-70 box-right-edge box-bottom-edge box-wnh-80 box-wnh-60"
+                 style="width: 70px; height: 70px;">
+                <div class="error-wrong-letter-bg"></div>
+                <span class="letter-in-box" style="font-size: 42px;"> </span></div>
+            <div class="box letter box-wnh-70 box-right-edge box-bottom-edge box-wnh-80 box-wnh-60"
+                 style="width: 70px; height: 70px;">
+                <div class="error-wrong-letter-bg"></div>
+                <span class="letter-in-box" style="font-size: 42px;"> </span></div>
+            <div class="endRow"></div>
+            <input class="dummy" type="text" autocapitalize="off" autocorrect="off"
+                   autocomplete="off" spellcheck="false" aria-label="Grid" style="left: 155px;
+            top: 0px;">
+        </div>
+        <div class="crossword-footer" style="visibility: visible; width: 350px;">
+            <div class="crossword-footer-message">
+                <div class="footer-title">Hyperallergic Mini Art Crossword: March 2025</div>
+                <div class="footer-author">
+                    <div class="footer-by">By</div>
+                    <div class="footer-author-name">Natan Last</div>
+                </div>
+                <div class="footer-powered-by">Powered by <a target="_blank"
+                                                             href="https://amuselabs.com/?utm_source=hyperallergic.com&amp;utm_medium=pbp&amp;utm_campaign=hyperallergic"
+                                                             rel="nofollow">PuzzleMe</a><span
+                        class="trademark">™</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

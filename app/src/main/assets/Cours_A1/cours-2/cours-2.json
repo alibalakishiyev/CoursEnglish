@@ -1,0 +1,94 @@
+{
+  "lesson": "Elementary Ders 2",
+  "level": "A1",
+  "source": "Wordismo - İngilizce Kelime uygulaması (Seçkin Esen)",
+  "targetWords": [
+    {
+      "word": "aunt",
+      "meaning": "xala/teyze, teyze",
+      "example": "My aunt is a teacher."
+    },
+    {
+      "word": "bag",
+      "meaning": "çanta, çanta",
+      "example": "I have books in my bag."
+    },
+    {
+      "word": "ball",
+      "meaning": "top, top",
+      "example": "Every child likes playing with a ball."
+    },
+    {
+      "word": "bath",
+      "meaning": "hamam, banyo",
+      "example": "I take a bath every morning."
+    },
+    {
+      "word": "beautiful",
+      "meaning": "gözəl, güzel",
+      "example": "My sister is a beautiful girl."
+    },
+    {
+      "word": "bill",
+      "meaning": "qəbz, fatura",
+      "example": "I pay the electricity bill every month."
+    },
+    {
+      "word": "body",
+      "meaning": "bədən, vücut",
+      "example": "We usually use body language."
+    },
+    {
+      "word": "boil",
+      "meaning": "qaynatmaq, kaynatmak",
+      "example": "You must boil the water to make tea."
+    },
+    {
+      "word": "bookstore",
+      "meaning": "kitab mağazası, kitapçı",
+      "example": "We buy books at a bookstore."
+    },
+    {
+      "word": "boring",
+      "meaning": "darixdirici, sıkıcı",
+      "example": "I don’t like this movie because it is boring."
+    }
+  ],
+  "readingPractice": "My aunt is a beautiful woman. She works at a bookstore. She says her job is boring because it is always quiet. She boils water and makes tea before she goes to work. She says hot tea is good for her body health.",
+  "otherWords": [
+    { "word": "teacher", "meaning": "müəllim, öğretmen" },
+    { "word": "book", "meaning": "kitab, kitap" },
+    { "word": "every", "meaning": "hər, her" },
+    { "word": "child", "meaning": "uşaq, çocuk" },
+    { "word": "like", "meaning": "xoşlamaq, sevmek" },
+    { "word": "play", "meaning": "oynamaq, oynamak" },
+    { "word": "take bath", "meaning": "çimmək, duş almak" },
+    { "word": "morning", "meaning": "səhər, sabah" },
+    { "word": "sister", "meaning": "bacı, kız kardeş" },
+    { "word": "girl", "meaning": "qız uşaq, kız çocuk" },
+    { "word": "pay", "meaning": "ödəmək, ödemek" },
+    { "word": "electricity", "meaning": "elektrik, elektrik" },
+    { "word": "month", "meaning": "ay, ay" },
+    { "word": "usually", "meaning": "adətən, genellikle" },
+    { "word": "use", "meaning": "istifadə etmək, kullanmak" },
+    { "word": "language", "meaning": "dil, dil" },
+    { "word": "water", "meaning": "su, su" },
+    { "word": "make", "meaning": "etmək/yaratmaq, yapmak" },
+    { "word": "tea", "meaning": "çay, çay" },
+    { "word": "buy", "meaning": "almaq, satın almak" },
+    { "word": "this", "meaning": "bu, bu" },
+    { "word": "movie", "meaning": "film, film" },
+    { "word": "because", "meaning": "çünki, çünkü" },
+    { "word": "woman", "meaning": "qadın, kadın" },
+    { "word": "work", "meaning": "işləmək, çalışmak" },
+    { "word": "say", "meaning": "demək, söylemek" },
+    { "word": "job", "meaning": "iş, meslek" },
+    { "word": "always", "meaning": "həmişə, her zaman" },
+    { "word": "quiet", "meaning": "sakit, sessiz" },
+    { "word": "before", "meaning": "əvvəl, önce" },
+    { "word": "go", "meaning": "getmək, gitmek" },
+    { "word": "hot", "meaning": "isti, sıcak" },
+    { "word": "good", "meaning": "yaxşı, iyi" },
+    { "word": "health", "meaning": "sağlamlıq, sağlık" }
+  ]
+}

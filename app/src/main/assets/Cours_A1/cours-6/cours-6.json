@@ -1,0 +1,84 @@
+{
+  "lesson": "Elementary Ders 6",
+  "level": "A1",
+  "source": "Wordismo",
+  "targetWords": [
+    {
+      "word": "cold",
+      "meaning": "soyuq",
+      "example": "My hands are getting cold now."
+    },
+    {
+      "word": "company",
+      "meaning": "şirkət",
+      "example": "He began to work for that company last year."
+    },
+    {
+      "word": "continue",
+      "meaning": "davam etmək",
+      "example": "I want to continue helping those people."
+    },
+    {
+      "word": "correct",
+      "meaning": "doğru",
+      "example": "Is my answer correct?"
+    },
+    {
+      "word": "country",
+      "meaning": "ölkə",
+      "example": "Germany is a big country."
+    },
+    {
+      "word": "cow",
+      "meaning": "inek",
+      "example": "There are a lot of cows and sheep in New Zealand."
+    },
+    {
+      "word": "cry",
+      "meaning": "ağlamaq",
+      "example": "The baby is crying now."
+    },
+    {
+      "word": "daily",
+      "meaning": "gündəlik",
+      "example": "Tell me about your daily life."
+    },
+    {
+      "word": "dark",
+      "meaning": "qaranlıq",
+      "example": "My sister is afraid of the dark."
+    },
+    {
+      "word": "dentist",
+      "meaning": "diş həkimi",
+      "example": "My daughter dislikes dentists."
+    }
+  ],
+  "readingPractice": "Mən ölkəmdəki ən böyük şirkətdə işləyirəm. Dünən ofisdə elektrik yox idi, buna görə həm soyuq, həm də qaranlıq idi. Mən gündəlik işimə davam etmək istədim, amma edə bilmədim.",
+  "otherWords": [
+    { "word": "hand", "meaning": "əl" },
+    { "word": "now", "meaning": "indi" },
+    { "word": "begin", "meaning": "başlamaq" },
+    { "word": "work", "meaning": "işləmək, iş" },
+    { "word": "last year", "meaning": "ötən il" },
+    { "word": "want", "meaning": "istəmək" },
+    { "word": "help", "meaning": "kömək etmək" },
+    { "word": "those", "meaning": "o (çoxluqda)" },
+    { "word": "people", "meaning": "insanlar" },
+    { "word": "answer", "meaning": "cavab" },
+    { "word": "Germany", "meaning": "Almaniya" },
+    { "word": "big", "meaning": "böyük" },
+    { "word": "sheep", "meaning": "qoyun" },
+    { "word": "New Zealand", "meaning": "Yeni Zelandiya" },
+    { "word": "baby", "meaning": "körpə" },
+    { "word": "tell", "meaning": "danışmaq, demək" },
+    { "word": "life", "meaning": "həyat" },
+    { "word": "sister", "meaning": "bacı" },
+    { "word": "afraid of", "meaning": "qorxmaq" },
+    { "word": "daughter", "meaning": "qız övlad" },
+    { "word": "dislike", "meaning": "xoşlamamaq" },
+    { "word": "yesterday", "meaning": "dünən" },
+    { "word": "electricity", "meaning": "elektrik" },
+    { "word": "office", "meaning": "ofis" }
+  ]
+}

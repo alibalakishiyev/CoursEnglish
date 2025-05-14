@@ -1,0 +1,95 @@
+{
+  "lesson": "Elementary Ders 9",
+  "level": "A1",
+  "source": "Wordismo",
+  "targetWords": [
+    {
+      "word": "flight",
+      "meaning": "uçuş",
+      "example": "The flight to Chicago took 4 hours."
+    },
+    {
+      "word": "floor",
+      "meaning": "yer, zemin",
+      "example": "I must sweep the kitchen floor."
+    },
+    {
+      "word": "fork",
+      "meaning": "çatal",
+      "example": "Eat your food with a fork, please."
+    },
+    {
+      "word": "friendly",
+      "meaning": "cana yaxın,dost",
+      "example": "Tom is a friendly man."
+    },
+    {
+      "word": "fruit",
+      "meaning": "meyvə",
+      "example": "My mother bought some apples at a fruit store."
+    },
+    {
+      "word": "funny",
+      "meaning": "komik",
+      "example": "This dress may look funny, but I like it."
+    },
+    {
+      "word": "garden",
+      "meaning": "bağça",
+      "example": "A rabbit is running in the garden."
+    },
+    {
+      "word": "glass",
+      "meaning": "stəkən, bardaq",
+      "example": "I'd like a glass of water, please."
+    },
+    {
+      "word": "grape",
+      "meaning": "üzüm",
+      "example": "Someone has brought us some grapes."
+    },
+    {
+      "word": "gun",
+      "meaning": "silah",
+      "example": "Nowadays many people have guns."
+    }
+  ],
+  "readingPractice": "My grandfather has a garden outside the city. He grows grapes and other kinds of fruit. He is a very friendly man and he likes to tell stories. His friends always visit him in order to listen to his funny stories.",
+  "otherWords": [
+    { "word": "take", "meaning": "almaq, sürmək" },
+    { "word": "sweep", "meaning": "süpürmək" },
+    { "word": "kitchen", "meaning": "mətbəx" },
+    { "word": "eat", "meaning": "yemək" },
+    { "word": "food", "meaning": "yemək" },
+    { "word": "please", "meaning": "lütfən" },
+    { "word": "man", "meaning": "adam" },
+    { "word": "mother", "meaning": "ana" },
+    { "word": "buy", "meaning": "satın almaq" },
+    { "word": "apple", "meaning": "alma" },
+    { "word": "store", "meaning": "dükkan" },
+    { "word": "this", "meaning": "bu" },
+    { "word": "dress", "meaning": "paltar" },
+    { "word": "look", "meaning": "görünmək" },
+    { "word": "like", "meaning": "sevmək, bəyənmək" },
+    { "word": "rabbit", "meaning": "tavşan" },
+    { "word": "run", "meaning": "qaçmaq" },
+    { "word": "water", "meaning": "su" },
+    { "word": "someone", "meaning": "birisi" },
+    { "word": "bring", "meaning": "gətirmək" },
+    { "word": "nowadays", "meaning": "indiki zamanlarda" },
+    { "word": "people", "meaning": "insanlar" },
+    { "word": "grandfather", "meaning": "baba" },
+    { "word": "outside", "meaning": "çöl" },
+    { "word": "city", "meaning": "şəhər" },
+    { "word": "grow", "meaning": "yetişdirmək" },
+    { "word": "other", "meaning": "digər" },
+    { "word": "kind", "meaning": "növ" },
+    { "word": "tell", "meaning": "anlatmaq" },
+    { "word": "story", "meaning": "hekayə" },
+    { "word": "friend", "meaning": "dost" },
+    { "word": "visit", "meaning": "ziyaret etmək" },
+    { "word": "always", "meaning": "hər zaman" },
+    { "word": "in order to", "meaning": "-mək məqsədilə" },
+    { "word": "listen", "meaning": "dinləmək" }
+  ]
+}

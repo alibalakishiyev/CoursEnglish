@@ -1,0 +1,88 @@
+{
+  "lesson": "Elementary Ders 8",
+  "level": "A1",
+  "source": "Wordismo",
+  "targetWords": [
+    {
+      "word": "engineer",
+      "meaning": "mühəndis",
+      "example": "My father is an engineer."
+    },
+    {
+      "word": "enough",
+      "meaning": "kifayət qədər",
+      "example": "He is not good enough to play in this team."
+    },
+    {
+      "word": "eraser",
+      "meaning": "silgi",
+      "example": "Can I use your eraser?"
+    },
+    {
+      "word": "error",
+      "meaning": "xəta",
+      "example": "There are a lot of errors in your essay."
+    },
+    {
+      "word": "fall",
+      "meaning": "düşmək",
+      "example": "I sometimes fall down while ice skating."
+    },
+    {
+      "word": "far",
+      "meaning": "uzaq",
+      "example": "How far away is the airport?"
+    },
+    {
+      "word": "farm",
+      "meaning": "ferma",
+      "example": "The Smiths have a farm outside the city."
+    },
+    {
+      "word": "fat",
+      "meaning": "kök",
+      "example": "She's not fat. She is thin."
+    },
+    {
+      "word": "finger",
+      "meaning": "barmaq",
+      "example": "My middle finger is the longest."
+    },
+    {
+      "word": "fire",
+      "meaning": "yanğın",
+      "example": "There was a fire near the train station last night."
+    }
+  ],
+  "readingPractice": "Engineers have very difficult jobs because they mustn’t make errors. They must have enough knowledge in their field. Sometimes they have to work far away from their families.",
+  "otherWords": [
+    { "word": "father", "meaning": "ata" },
+    { "word": "good", "meaning": "yaxşı" },
+    { "word": "play", "meaning": "oynamaq" },
+    { "word": "this", "meaning": "bu" },
+    { "word": "team", "meaning": "komanda" },
+    { "word": "can", "meaning": "-ə bilmək" },
+    { "word": "use", "meaning": "istifadə etmək" },
+    { "word": "essay", "meaning": "esse" },
+    { "word": "sometimes", "meaning": "bəzən" },
+    { "word": "down", "meaning": "aşağı" },
+    { "word": "ice skating", "meaning": "buz pateni" },
+    { "word": "airport", "meaning": "hava limanı" },
+    { "word": "outside", "meaning": "çöldə" },
+    { "word": "city", "meaning": "şəhər" },
+    { "word": "middle", "meaning": "orta" },
+    { "word": "long", "meaning": "uzun" },
+    { "word": "thin", "meaning": "incə" },
+    { "word": "near", "meaning": "yanında" },
+    { "word": "train station", "meaning": "dəmiryolu stansiyası" },
+    { "word": "last night", "meaning": "keçən gecə" },
+    { "word": "difficult", "meaning": "çətin" },
+    { "word": "jobs", "meaning": "peşələr" },
+    { "word": "make", "meaning": "etmək" },
+    { "word": "knowledge", "meaning": "bilik" },
+    { "word": "field", "meaning": "sahə" },
+    { "word": "work", "meaning": "işləmək" },
+    { "word": "away", "meaning": "uzaq" },
+    { "word": "family", "meaning": "ailə" }
+  ]
+}

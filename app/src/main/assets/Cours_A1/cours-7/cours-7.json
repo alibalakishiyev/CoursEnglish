@@ -1,0 +1,85 @@
+{
+  "lesson": "Elementary Ders 7",
+  "level": "A1",
+  "source": "Wordismo",
+  "targetWords": [
+    {
+      "word": "difficult",
+      "meaning": "çətin",
+      "example": "This game is too difficult for me."
+    },
+    {
+      "word": "dirty",
+      "meaning": "çirkli",
+      "example": "The child’s hands are dirty. He needs to wash them."
+    },
+    {
+      "word": "divorced",
+      "meaning": "boşanmış",
+      "example": "His parents got divorced when he was seven."
+    },
+    {
+      "word": "draw",
+      "meaning": "çəkmək",
+      "example": "She drew a picture of a tree."
+    },
+    {
+      "word": "early",
+      "meaning": "erkən",
+      "example": "I didn't want to get up early this morning."
+    },
+    {
+      "word": "earn",
+      "meaning": "qazanmaq",
+      "example": "They wanted to earn a lot of money."
+    },
+    {
+      "word": "elephant",
+      "meaning": "fil",
+      "example": "There are two elephants in this zoo."
+    },
+    {
+      "word": "emergency",
+      "meaning": "təcili",
+      "example": "What number should I call in case of an emergency?"
+    },
+    {
+      "word": "empty",
+      "meaning": "boş",
+      "example": "This box is empty."
+    },
+    {
+      "word": "engaged",
+      "meaning": "nişanlı",
+      "example": "Tom is engaged to Sue."
+    }
+  ],
+  "readingPractice": "My uncle is engaged to an artist. Her name is Carol. She draws pictures and sells them. It is very difficult, but she earns a lot of money. Last month, she drew a picture of an elephant and gave it to me as a present.",
+  "otherWords": [
+    { "word": "game", "meaning": "oyun" },
+    { "word": "child", "meaning": "uşaq" },
+    { "word": "hand", "meaning": "əl" },
+    { "word": "need", "meaning": "ihtiyac duymaq" },
+    { "word": "wash", "meaning": "yumaq" },
+    { "word": "parents", "meaning": "valideynlər" },
+    { "word": "picture", "meaning": "şəkil" },
+    { "word": "tree", "meaning": "ağac" },
+    { "word": "want", "meaning": "istəmək" },
+    { "word": "get up", "meaning": "qalxmaq" },
+    { "word": "this", "meaning": "bu" },
+    { "word": "morning", "meaning": "sabah" },
+    { "word": "money", "meaning": "pul" },
+    { "word": "zoo", "meaning": "heyvanat bağçası" },
+    { "word": "number", "meaning": "nömrə, say" },
+    { "word": "call", "meaning": "çağırmaq, zəng etmək" },
+    { "word": "in case of", "meaning": "halında, vəziyyətində" },
+    { "word": "box", "meaning": "qutu" },
+    { "word": "uncle", "meaning": "əmi, dayı" },
+    { "word": "artist", "meaning": "rəssam" },
+    { "word": "name", "meaning": "ad" },
+    { "word": "sell", "meaning": "satmaq" },
+    { "word": "last month", "meaning": "keçən ay" },
+    { "word": "give", "meaning": "vermək" },
+    { "word": "present", "meaning": "hədiyyə" }
+  ]
+}

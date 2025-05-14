@@ -1,0 +1,97 @@
+{
+  "lesson": "Elementary Ders 1",
+  "level": "A1",
+  "source": "Wordismo - İngilizce Kelime uygulaması (Seçkin Esen)",
+  "targetWords": [
+    {
+      "word": "accountant",
+      "meaning": "mühasib, muhasebeci",
+      "example": "My brother is an accountant. His job is about finance.",
+      "audio" : "accountant.mp3"
+    },
+    {
+      "word": "afraid",
+      "meaning": "qorxmuş, korkmuş",
+      "example": "The little kid was afraid of the dog.",
+      "audio" : "afraid.mp3"
+    },
+    {
+      "word": "age",
+      "meaning": "yaş, yaş",
+      "example": "Age is always important.",
+      "audio" : "age.mp3"
+    },
+    {
+      "word": "airplane",
+      "meaning": "təyyarə, uçak",
+      "example": "I like travelling by airplanes.",
+      "audio" : "airplane.mp3"
+    },
+    {
+      "word": "alone",
+      "meaning": "tənha, yalnız",
+      "example": "He doesn’t like living alone.",
+      "audio" : "alone.mp3"
+    },
+    {
+      "word": "angry",
+      "meaning": "əsəbi, kızgın",
+      "example": "My sister is angry now. She isn’t talking to me.",
+      "audio" : "angry.mp3"
+    },
+    {
+      "word": "animal",
+      "meaning": "heyvan, hayvan",
+      "example": "I like animals very much.",
+      "audio" : "animal.mp3"
+    },
+    {
+      "word": "answer",
+      "meaning": "cavab, cevap; cavab vermək, cevap vermek",
+      "example": "My teacher always answers my questions.",
+      "audio" : "answer.mp3"
+    },
+    {
+      "word": "architect",
+      "meaning": "memar, mimar",
+      "example": "My father works as an architect.",
+      "audio" : "architect.mp3"
+    },
+    {
+      "word": "arrive",
+      "meaning": "çatmaq, ulaşmak",
+      "example": "Don’t worry. We will arrive there on time.",
+      "audio" : "arrive.mp3"
+    }
+  ],
+  "readingPractice": "I am an accountant. In my job, age is not important. I am young but I can work well. Sometimes I travel by airplanes. I don’t like being alone in an airplane. I sometimes get angry when I don’t arrive somewhere on time.",
+  "otherWords": [
+    { "word": "brother", "meaning": "qardaş, erkek kardeş" },
+    { "word": "job", "meaning": "iş, meslek" },
+    { "word": "finance", "meaning": "maliyyə, finans" },
+    { "word": "little", "meaning": "kiçik, küçük" },
+    { "word": "kid", "meaning": "uşaq, çocuk" },
+    { "word": "dog", "meaning": "it, köpek" },
+    { "word": "always", "meaning": "həmişə, her zaman" },
+    { "word": "important", "meaning": "vacib, önemli" },
+    { "word": "like", "meaning": "xoşlamaq/sevmək, sevmek/hoşlanmak" },
+    { "word": "travel", "meaning": "səyahət etmək, seyahat etmek" },
+    { "word": "live", "meaning": "yaşamaq, yaşamak" },
+    { "word": "sister", "meaning": "bacı, kız kardeş" },
+    { "word": "now", "meaning": "indi, şimdi" },
+    { "word": "talk", "meaning": "danışmaq, konuşmak" },
+    { "word": "teacher", "meaning": "müəllim, öğretmen" },
+    { "word": "question", "meaning": "sual, soru" },
+    { "word": "father", "meaning": "ata, baba" },
+    { "word": "work", "meaning": "işləmək, çalışmak" },
+    { "word": "worry", "meaning": "narahat olmaq, endişe etmek" },
+    { "word": "time", "meaning": "vaxt, zaman" },
+    { "word": "young", "meaning": "cavan, genç" },
+    { "word": "can", "meaning": "-ə bilər, -ebilir" },
+    { "word": "well", "meaning": "yaxşı, iyi" },
+    { "word": "being,being alone", "meaning": "varliq, tək olmaq" },
+    { "word": "sometimes", "meaning": "bəzən, bazen" },
+    { "word": "get angry", "meaning": "əsəbləşmək, sinirlenmek" },
+    { "word": "somewhere", "meaning": "haradasa, herhangi bir yer" }
+  ]
+}

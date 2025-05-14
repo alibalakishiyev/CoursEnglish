@@ -1,0 +1,94 @@
+{
+  "lesson": "Elementary Ders 10",
+  "level": "A1",
+  "source": "Wordismo",
+  "targetWords": [
+    {
+      "word": "habit",
+      "meaning": "alışkanlıq",
+      "example": "It's not easy to get rid of a bad habit."
+    },
+    {
+      "word": "half",
+      "meaning": "yarım",
+      "example": "I bought half a dozen eggs."
+    },
+    {
+      "word": "hand",
+      "meaning": "əl",
+      "example": "Take your hands out of your pockets."
+    },
+    {
+      "word": "handsome",
+      "meaning": "yakışıklı",
+      "example": "He is handsome and clever."
+    },
+    {
+      "word": "hate",
+      "meaning": "nifrət etmək",
+      "example": "I hate to see you look so upset."
+    },
+    {
+      "word": "health",
+      "meaning": "sağlamlıq",
+      "example": "Regular exercise is good for your health."
+    },
+    {
+      "word": "hear",
+      "meaning": "eşitmək",
+      "example": "She would be glad to hear that."
+    },
+    {
+      "word": "heart",
+      "meaning": "ürək",
+      "example": "Isabel's heart was beating fast while she was running."
+    },
+    {
+      "word": "heavy",
+      "meaning": "ağır",
+      "example": "There is a heavy tax on tobacco."
+    },
+    {
+      "word": "high",
+      "meaning": "yüksək",
+      "example": "Mount Everest is the world's highest peak."
+    }
+  ],
+  "readingPractice": "I saw a doctor yesterday. He said that I was a handsome young man but I had bad habits. When I heard him, I decided to stop smoking. Smoking is not good for my heart. Also, heavy smokers have many different health problems. It causes damage in the body.",
+  "otherWords": [
+    { "word": "easy", "meaning": "asan" },
+    { "word": "get rid of", "meaning": "qurtulmaq" },
+    { "word": "bad", "meaning": "pis" },
+    { "word": "buy", "meaning": "almaq" },
+    { "word": "dozen", "meaning": "düzine" },
+    { "word": "egg", "meaning": "yumurta" },
+    { "word": "take out", "meaning": "çıxarmaq" },
+    { "word": "pocket", "meaning": "cib" },
+    { "word": "clever", "meaning": "zehmetli" },
+    { "word": "see", "meaning": "görmək" },
+    { "word": "upset", "meaning": "kədərlənmək" },
+    { "word": "regular", "meaning": "düzenli" },
+    { "word": "exercise", "meaning": "idman" },
+    { "word": "good", "meaning": "yaxşı" },
+    { "word": "glad", "meaning": "xoşbəxt" },
+    { "word": "beat", "meaning": "vurmaq (ürək)" },
+    { "word": "fast", "meaning": "tez" },
+    { "word": "run", "meaning": "qaçmaq" },
+    { "word": "tax", "meaning": "vergisi" },
+    { "word": "world", "meaning": "dünya" },
+    { "word": "peak", "meaning": "zirvə" },
+    { "word": "doctor", "meaning": "həkim" },
+    { "word": "yesterday", "meaning": "dünən" },
+    { "word": "say", "meaning": "demək" },
+    { "word": "young", "meaning": "gənc" },
+    { "word": "man", "meaning": "adam" },
+    { "word": "decide", "meaning": "qərar vermək" },
+    { "word": "stop", "meaning": "dayanmaq" },
+    { "word": "smoking", "meaning": "siqaret çəkmək" },
+    { "word": "smokers", "meaning": "siqaret çəkənlər" },
+    { "word": "different", "meaning": "fərqli" },
+    { "word": "cause", "meaning": "səbəb olmaq" },
+    { "word": "damage", "meaning": "zərər" },
+    { "word": "body", "meaning": "bədən" }
+  ]
+}
