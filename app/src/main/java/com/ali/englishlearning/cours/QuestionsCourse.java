@@ -322,11 +322,8 @@ public class QuestionsCourse extends AppCompatActivity {
             materialAlertDialogBuilder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int i) {
-
                     startActivity(new Intent(getApplicationContext(), CoursList.class));
                     finish();
-
-
                 }
             });
             materialAlertDialogBuilder.show();

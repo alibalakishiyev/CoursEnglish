@@ -20,7 +20,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainPage extends AppCompatActivity {
-    private ImageButton btnCros,btnQuest;
+    private ImageButton btnCros, btnQuest;
     private VideoView videoView;
     private FirebaseAuth fAuth;
 
@@ -39,7 +39,7 @@ public class MainPage extends AppCompatActivity {
         btnQuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainPage.this,CoursList.class));
+                startActivity(new Intent(MainPage.this, CoursList.class));
             }
         });
 
@@ -57,6 +57,8 @@ public class MainPage extends AppCompatActivity {
 
         // Video bitdikdə yenidən başlasın
         videoView.setOnCompletionListener(mp -> videoView.start());
+
+        getOnBackPressedDispatcher().addCallback(this, callback);
 
 
     }
@@ -77,13 +79,10 @@ public class MainPage extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int i) {
 
-                    if (fAuth.getCurrentUser() != null) {
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        finish();
-                    }else{
-                        startActivity(new Intent(MainPage.this, Login.class));
-                        finish();
-                    }
+
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    finish();
+
 
                 }
             });

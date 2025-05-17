@@ -1,11 +1,14 @@
 package com.ali.englishlearning.stt;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.speech.RecognizerIntent;
+import android.speech.SpeechRecognizer;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.ScrollingMovementMethod;
@@ -21,7 +24,10 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.ali.englishlearning.R;
+import com.ali.englishlearning.cours.SentenceItem;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.vosk.LibVosk;
 import org.vosk.LogLevel;
 import org.vosk.Model;
@@ -31,8 +37,15 @@ import org.vosk.android.SpeechService;
 import org.vosk.android.StorageService;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SpeechToText extends AppCompatActivity implements RecognitionListener {
 
@@ -43,8 +56,13 @@ public class SpeechToText extends AppCompatActivity implements RecognitionListen
     private static final int PERMISSIONS_REQUEST_RECORD_AUDIO = 1;
     private static final int UPDATE_INTERVAL_MS = 300;
 
-    private TextView resultView, textExample, textTimer;
-    private ImageButton btnMic, btnResult;
+    private List<SentenceItem> sentenceList;
+    private int currentIndex = 0;
+    private boolean showingEnglish = true;
+    private Random random;
+
+    private TextView resultOut, textExample, textAnswer, textTimer;
+    private ImageButton btnMic, btnResult, btnNextExam;
     private ToggleButton btnStop;
     private Model model;
     private SpeechService speechService;
@@ -78,17 +96,56 @@ public class SpeechToText extends AppCompatActivity implements RecognitionListen
         setupClickListeners();
         checkPermissions();
         LibVosk.setLogLevel(LogLevel.INFO);
+
+        sentenceList = loadSentencesFromJson();
+        random = new Random();
+
+
+        if (!sentenceList.isEmpty()) {
+            currentIndex = random.nextInt(sentenceList.size());
+            textExample.setText(sentenceList.get(currentIndex).english);
+            textAnswer.setText("\"Click on the example to see the translation.\"");
+            showingEnglish = true;
+        }
+
+        // İngilis cümləyə toxunanda tərcüməni göstər
+        textExample.setOnClickListener(v -> {
+            SentenceItem current = sentenceList.get(currentIndex);
+            if (showingEnglish) {
+                textAnswer.setText(current.azerbaijani);
+                showingEnglish = false;
+            }
+        });
+
+        // "Next" düyməsinə basanda random cümlə göstər və tərcüməni təmizlə
+        btnNextExam.setOnClickListener(v -> {
+            if (!sentenceList.isEmpty()) {
+                int newIndex;
+                do {
+                    newIndex = random.nextInt(sentenceList.size());
+                } while (newIndex == currentIndex); // eyni cümlə olmasın
+
+                currentIndex = newIndex;
+                textExample.setText(sentenceList.get(currentIndex).english);
+                textAnswer.setText("\"Click on the example to see the translation.\"");
+                showingEnglish = true;
+            }
+        });
+
+
     }
 
     private void initializeViews() {
-        resultView = findViewById(R.id.textOutput);
+        resultOut = findViewById(R.id.textOutput);
         textExample = findViewById(R.id.textExample);
         textTimer = findViewById(R.id.textTimer);
+        textAnswer = findViewById(R.id.textAnswer);
         btnMic = findViewById(R.id.btnMic);
         btnResult = findViewById(R.id.btnResult);
         btnStop = findViewById(R.id.btnStop);
+        btnNextExam = findViewById(R.id.btnNext);
 
-        resultView.setMovementMethod(new ScrollingMovementMethod());
+        resultOut.setMovementMethod(new ScrollingMovementMethod());
         setUiState(STATE_START);
     }
 
@@ -120,7 +177,7 @@ public class SpeechToText extends AppCompatActivity implements RecognitionListen
         startTime = System.currentTimeMillis();
         btnMic.setImageResource(R.drawable.micro64);
         fullTranscription.setLength(0);
-        resultView.setText("Dinliyorum...");
+        resultOut.setText("Dinliyirem...");
         textTimer.setText("00:00");
 
         try {
@@ -142,7 +199,9 @@ public class SpeechToText extends AppCompatActivity implements RecognitionListen
         public void run() {
             if (isRecording && !lastPartialResult.isEmpty()) {
                 fullTranscription.append(lastPartialResult).append(" ");
-                resultView.setText(fullTranscription.toString());
+
+                resultOut.setText(fullTranscription.toString());
+
                 scrollToBottom();
                 lastPartialResult = "";
             }
@@ -165,7 +224,7 @@ public class SpeechToText extends AppCompatActivity implements RecognitionListen
 
         if (!lastPartialResult.isEmpty()) {
             fullTranscription.append(lastPartialResult);
-            resultView.setText(fullTranscription.toString());
+            resultOut.setText(fullTranscription.toString());
             scrollToBottom();
         }
 
@@ -177,17 +236,17 @@ public class SpeechToText extends AppCompatActivity implements RecognitionListen
         String exampleText = textExample.getText().toString().trim();
 
         if (userText.isEmpty()) {
-            Toast.makeText(this, "Karşılaştırılacak metin yok", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Qarshilashdirmaq ucun metin yoxdur", Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (exampleText.isEmpty()) {
-            Toast.makeText(this, "Örnek metin bulunamadı", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Teqdim Olunan metin", Toast.LENGTH_SHORT).show();
             return;
         }
 
         SpannableString comparisonResult = compareTexts(userText, exampleText);
-        resultView.setText(comparisonResult);
+        resultOut.setText(comparisonResult);
     }
 
     private SpannableString compareTexts(String userText, String exampleText) {
@@ -195,10 +254,10 @@ public class SpeechToText extends AppCompatActivity implements RecognitionListen
         String[] exampleWords = exampleText.split("\\s+");
 
         StringBuilder resultBuilder = new StringBuilder();
-        resultBuilder.append("Sizin Konuşmanız:\n");
+        resultBuilder.append("Sizin Danishmaqiniz:\n");
 
         SpannableString spannableResult = new SpannableString(resultBuilder.toString() + userText +
-                "\n\nÖrnek Metin:\n" + exampleText);
+                "\n\nTeqdim Olunmush Metin:\n" + exampleText);
 
         int diffStart = resultBuilder.length();
         highlightDifferences(spannableResult, userWords, exampleWords, diffStart);
@@ -207,58 +266,119 @@ public class SpeechToText extends AppCompatActivity implements RecognitionListen
     }
 
     private void highlightDifferences(SpannableString spannable, String[] userWords, String[] exampleWords, int offset) {
-        int maxLength = Math.min(userWords.length, exampleWords.length);
+        int maxLength = Math.max(userWords.length, exampleWords.length);
 
         for (int i = 0; i < maxLength; i++) {
-            if (!userWords[i].equalsIgnoreCase(exampleWords[i])) {
-                int start = findWordPosition(spannable.toString(), userWords[i], offset);
+            if (i < userWords.length) {
+                String userWord = userWords[i];
+                String exampleWord = i < exampleWords.length ? exampleWords[i] : "";
+
+                int start = findWordPosition(spannable.toString(), userWord, offset);
                 if (start >= 0) {
-                    int end = start + userWords[i].length();
-                    spannable.setSpan(new ForegroundColorSpan(Color.RED),
-                            start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    int end = start + userWord.length();
+
+                    if (userWord.equalsIgnoreCase(exampleWord)) {
+                        // ✅ Düzgün söz → yaşıl
+                        spannable.setSpan(new ForegroundColorSpan(Color.BLUE),
+                                start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    } else {
+                        // ❌ Səhv söz → qırmızı
+                        spannable.setSpan(new ForegroundColorSpan(Color.RED),
+                                start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    }
                 }
+
+                offset = start + userWord.length(); // Növbəti axtarış üçün ofseti güncəllə
             }
         }
     }
 
+
     private int findWordPosition(String text, String word, int startFrom) {
-        int pos = text.indexOf(word, startFrom);
-        if (pos >= 0 && (pos == 0 || !Character.isLetter(text.charAt(pos - 1)))) {
-            return pos;
+        String lowerText = text.toLowerCase();
+        String lowerWord = word.toLowerCase();
+
+        int index = lowerText.indexOf(lowerWord, startFrom);
+        while (index != -1) {
+            // Orijinal mətnin həmin hissəsinin uzunluğu word ilə eynidirsə və uyğun gəlirsə, return et
+            String originalSegment = text.substring(index, Math.min(index + word.length(), text.length()));
+            if (originalSegment.equalsIgnoreCase(word)) {
+                return index;
+            }
+
+            // Tapmadısa, axtarışa davam et
+            index = lowerText.indexOf(lowerWord, index + 1);
         }
+
         return -1;
     }
 
+
+
     @Override
     public void onPartialResult(String hypothesis) {
-        lastPartialResult = hypothesis;
+//        lastPartialResult = hypothesis;
     }
 
     @Override
     public void onResult(String hypothesis) {
-        fullTranscription.append(hypothesis).append("\n");
-        updateDisplay();
+
+//        if (hypothesis != null && !hypothesis.trim().isEmpty()) {
+//            fullTranscription.append(hypothesis.trim()).append(" ");
+//            updateDisplay();
+//        }
+
+
+        if (hypothesis != null && !hypothesis.trim().isEmpty()) {
+            // Müvafiq "text":"..." hissələrini regex ilə tap
+            Pattern pattern = Pattern.compile("\"text\"\\s*:\\s*\"(.*?)\"");
+            Matcher matcher = pattern.matcher(hypothesis);
+
+            while (matcher.find()) {
+                String text = matcher.group(1).trim();
+                if (!text.isEmpty()) {
+                    fullTranscription.append(text).append(" ");
+                }
+            }
+
+            updateDisplay();
+        }
+
+
     }
 
     @Override
     public void onFinalResult(String hypothesis) {
-        fullTranscription.append(hypothesis).append("\n");
-        updateDisplay();
-        setUiState(STATE_DONE);
+
+        if (hypothesis != null && !hypothesis.trim().isEmpty()) {
+            // Müvafiq "text":"..." hissələrini regex ilə tap
+            Pattern pattern = Pattern.compile("\"text\"\\s*:\\s*\"(.*?)\"");
+            Matcher matcher = pattern.matcher(hypothesis);
+
+            while (matcher.find()) {
+                String text = matcher.group(1).trim();
+                if (!text.isEmpty()) {
+                    fullTranscription.append(text).append(" ");
+                }
+            }
+
+            updateDisplay();
+        }
     }
 
     private void updateDisplay() {
+
         runOnUiThread(() -> {
-            resultView.setText(fullTranscription.toString());
+            resultOut.setText(fullTranscription.toString().trim());
             scrollToBottom();
         });
     }
 
     private void scrollToBottom() {
-        if (resultView.getLayout() != null) {
-            int scrollAmount = resultView.getLayout().getLineTop(resultView.getLineCount()) - resultView.getHeight();
+        if (resultOut.getLayout() != null) {
+            int scrollAmount = resultOut.getLayout().getLineTop(resultOut.getLineCount()) - resultOut.getHeight();
             if (scrollAmount > 0) {
-                resultView.scrollTo(0, scrollAmount);
+                resultOut.scrollTo(0, scrollAmount);
             }
         }
     }
@@ -277,13 +397,13 @@ public class SpeechToText extends AppCompatActivity implements RecognitionListen
         runOnUiThread(() -> {
             switch (state) {
                 case STATE_START:
-                    resultView.setText("Model hazırlanıyor...");
+                    resultOut.setText("Model hazırlanıyor...");
                     btnMic.setEnabled(false);
                     btnResult.setEnabled(false);
                     btnStop.setEnabled(false);
                     break;
                 case STATE_READY:
-                    resultView.setText("Konuşmaya başlamak için mikrofona basın");
+                    resultOut.setText("Konuşmaya başlamak için mikrofona basın");
                     btnMic.setEnabled(true);
                     btnResult.setEnabled(false);
                     btnStop.setEnabled(false);
@@ -295,7 +415,7 @@ public class SpeechToText extends AppCompatActivity implements RecognitionListen
                     btnStop.setChecked(false);
                     break;
                 case STATE_MIC:
-                    resultView.setText("Dinliyorum...");
+                    resultOut.setText("Dinliyorum...");
                     btnMic.setEnabled(true);
                     btnResult.setEnabled(false);
                     btnStop.setEnabled(true);
@@ -306,7 +426,7 @@ public class SpeechToText extends AppCompatActivity implements RecognitionListen
 
     private void setErrorState(String message) {
         runOnUiThread(() -> {
-            resultView.setText(message);
+            resultOut.setText(message);
             btnMic.setEnabled(false);
             btnResult.setEnabled(false);
         });
@@ -357,5 +477,31 @@ public class SpeechToText extends AppCompatActivity implements RecognitionListen
         if (model != null) {
             model.close();
         }
+    }
+
+    private List<SentenceItem> loadSentencesFromJson() {
+        List<SentenceItem> list = new ArrayList<>();
+        try {
+            InputStream is = getAssets().open("Cours_A1/cours-1/sentences1.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+
+            String json = new String(buffer, StandardCharsets.UTF_8);
+            JSONObject jsonObject = new JSONObject(json);
+            JSONArray sentences = jsonObject.getJSONArray("sentences");
+
+            for (int i = 0; i < sentences.length(); i++) {
+                JSONObject obj = sentences.getJSONObject(i);
+                SentenceItem item = new SentenceItem();
+                item.english = obj.getString("english");
+                item.azerbaijani = obj.getString("azerbaijani");
+                list.add(item);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }

@@ -1,5 +1,6 @@
 package com.ali.englishlearning.main;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -21,6 +23,9 @@ import com.ali.englishlearning.cours.QuestionsCourse;
 import com.ali.englishlearning.utils.Algo;
 import com.ali.englishlearning.utils.AlgoAdapter;
 import com.ali.englishlearning.utils.AlgoListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,6 +33,8 @@ import java.util.ArrayList;
 public class CoursList extends AppCompatActivity implements AlgoListener {
 
     private ArrayList<Course> courses = new ArrayList<>();
+    private AdView mAdView4;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +87,13 @@ public class CoursList extends AppCompatActivity implements AlgoListener {
         RecyclerView recyclerView = findViewById(R.id.main_recycler_view);
         recyclerView.setAdapter(algoAdapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+
+        mAdView4 = findViewById(R.id.adView4);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView4.loadAd(adRequest);
+
+        getOnBackPressedDispatcher().addCallback(this, callback);
+
     }
 
     @Override
@@ -106,4 +120,27 @@ public class CoursList extends AppCompatActivity implements AlgoListener {
         }
         return null; // Əgər kurs tapılmasa
     }
+
+    OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+        @Override
+        public void handleOnBackPressed() {
+            MaterialAlertDialogBuilder materialAlertDialogBuilder = new MaterialAlertDialogBuilder(CoursList.this);
+            materialAlertDialogBuilder.setTitle(R.string.app_name);
+            materialAlertDialogBuilder.setMessage("Are you sure want to exit the app?");
+            materialAlertDialogBuilder.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int i) {
+                    dialog.dismiss();
+                }
+            });
+            materialAlertDialogBuilder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int i) {
+                    startActivity(new Intent(getApplicationContext(), MainPage.class));
+                    finish();
+                }
+            });
+            materialAlertDialogBuilder.show();
+        }
+    };
 }
