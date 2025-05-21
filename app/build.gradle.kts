@@ -110,6 +110,10 @@ android {
 
         // Multi-dex support
         implementation("androidx.multidex:multidex:2.0.1")
+
+//        mlkit
+        implementation ("com.google.mlkit:translate:17.0.1")
+
     }
 
 // Fix for duplicate classes error
@@ -120,4 +124,10 @@ android {
             force("org.tensorflow:tensorflow-lite-metadata:0.4.4")
         }
     }
+}
+dependencies {
+    implementation(libs.appcompat)
+    implementation(libs.material)
+    implementation(libs.activity)
+    implementation(libs.constraintlayout)
 }

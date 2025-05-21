@@ -21,6 +21,7 @@ import com.ali.englishlearning.authenticator.Login;
 import com.ali.englishlearning.authenticator.Register;
 import com.ali.englishlearning.main.MainPage;
 import com.ali.englishlearning.stt.SpeechToText;
+import com.ali.englishlearning.textotext.TextToText;
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -34,7 +35,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageButton btnCours,menuButton,btnExample;
+    private ImageButton btnCours,menuButton,btnExample,btnTTT;
     private AdView mAdView;
     private InterstitialAd mInterstitialAd;
     private long lastAdShownTime = 0; // Son reklamın göstərildiyi vaxt (millisaniyə ilə)
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         fStore = FirebaseFirestore.getInstance();
         menuButton = findViewById(R.id.menu_button);
         btnExample = findViewById(R.id.btnExample);
+        btnTTT = findViewById(R.id.btnTTT);
 
 
 
@@ -71,6 +73,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, SpeechToText.class);
+                startActivity(intent);
+            }
+        });
+
+        btnTTT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this , TextToText.class);
                 startActivity(intent);
             }
         });

@@ -3,6 +3,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#F00606</color>
+    <color name="blue">#1F3AC3</color>
+    <color name="yelow">#FFEB3B</color>
 
     <color name="mainicon">#05D7F2</color>
+    <color name="darkcolor">#D93A08</color>
 </resources>
