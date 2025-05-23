@@ -20,7 +20,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainPage extends AppCompatActivity {
-    private ImageButton btnCros, btnQuest;
+    private ImageButton btnQuest;
     private VideoView videoView;
     private FirebaseAuth fAuth;
 
@@ -30,7 +30,6 @@ public class MainPage extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main_page);
 
-        btnCros = findViewById(R.id.buttonCros);
         btnQuest = findViewById(R.id.buttonQuest);
         videoView = findViewById(R.id.videoV);
         fAuth = FirebaseAuth.getInstance();
@@ -43,12 +42,6 @@ public class MainPage extends AppCompatActivity {
             }
         });
 
-        btnCros.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainPage.this, CrosswordList.class));
-            }
-        });
 
         // raw/england2.webm faylını VideoView-a yükləyirik
         Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.england2);

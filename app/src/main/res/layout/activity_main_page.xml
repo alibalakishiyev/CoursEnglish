@@ -68,29 +68,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageButton
-                    android:id="@+id/buttonCros"
-                    android:layout_width="89dp"
-                    android:layout_height="62dp"
-                    android:layout_marginStart="29dp"
-                    android:layout_marginTop="119dp"
-                    android:layout_marginBottom="119dp"
-                    android:background="@drawable/crossword3"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
                     android:id="@+id/buttonQuest"
                     android:layout_width="111dp"
                     android:layout_height="101dp"
-                    android:layout_marginStart="120dp"
+                    android:layout_marginStart="261dp"
                     android:layout_marginTop="50dp"
                     android:layout_marginEnd="37dp"
+                    android:layout_marginBottom="149dp"
                     android:src="@drawable/cours6"
-                    app:layout_constraintBottom_toBottomOf="@+id/buttonCros"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/buttonCros"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
