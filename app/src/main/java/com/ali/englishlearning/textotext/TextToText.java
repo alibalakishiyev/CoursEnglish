@@ -1,5 +1,6 @@
 package com.ali.englishlearning.textotext;
 
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.Button;
@@ -17,7 +18,9 @@ import org.json.JSONObject;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 public class TextToText extends AppCompatActivity {
 
@@ -29,6 +32,8 @@ public class TextToText extends AppCompatActivity {
     ArrayList<String> azSentences = new ArrayList<>();
     ArrayList<String> enSentences = new ArrayList<>();
     int currentIndex = 0;
+    SharedPreferences preferences;
+    Set<String> seenIndexes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +46,16 @@ public class TextToText extends AppCompatActivity {
         btnCheck = findViewById(R.id.btnCheck);
         btnNextExample = findViewById(R.id.btnNextExample);
 
+
+
+        preferences = getSharedPreferences("SeenSentences", MODE_PRIVATE);
+        seenIndexes = preferences.getStringSet("seen", new HashSet<>());
+
         loadJsonData();
         showNextSentence();
 
         btnNextExample.setOnClickListener(v -> showNextSentence());
+
 
         btnCheck.setOnClickListener(v -> {
             String userInput = editTextText.getText().toString().trim();
@@ -59,7 +70,7 @@ public class TextToText extends AppCompatActivity {
                 // ❌ Səhv cavab
                 editTextText.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
                 MediaPlayer.create(this, R.raw.error).start();
-                Toast.makeText(this, "❌ Səhvdir. Doğru: " + correctAnswer, Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "❌ Səhvdir.", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -71,6 +82,9 @@ public class TextToText extends AppCompatActivity {
             textanswer.setText(correctAnswer);
             Toast.makeText(this, "Doğru cavab: " + correctAnswer, Toast.LENGTH_LONG).show();
         });
+
+
+
 
     }
 
@@ -108,11 +122,33 @@ public class TextToText extends AppCompatActivity {
 
 
     private void showNextSentence() {
-        if (azSentences.size() == 0) return;
-        currentIndex = new Random().nextInt(azSentences.size());
+        if (azSentences.isEmpty() || seenIndexes.size() == azSentences.size()) {
+            Toast.makeText(this, "Bütün cümlələr göstərildi.", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        Random random = new Random();
+        int index;
+
+        // Təkrar olmayan cümlə tapılana qədər dövr
+        do {
+            index = random.nextInt(azSentences.size());
+        } while (seenIndexes.contains(String.valueOf(index)));
+
+        currentIndex = index;
+
+        // Göstərilən cümləni yadda saxla
+        seenIndexes.add(String.valueOf(currentIndex));
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putStringSet("seen", seenIndexes);
+        editor.apply();
+
         metin.setText(azSentences.get(currentIndex));
         editTextText.setText("");
-        editTextText.setTextColor(getResources().getColor(android.R.color.black)); // 🔄 Reset rəng
+        editTextText.setTextColor(getResources().getColor(android.R.color.black)); // ✅ Rəngi sıfırla
+        textanswer.setText(""); // Əvvəlki cavabı təmizləyək
     }
+
+
 
 }

@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ali.englishlearning.R;
 import com.ali.englishlearning.cours.Course;
+import com.ali.englishlearning.cours.Pernouns;
 import com.ali.englishlearning.cours.QuestionsCourse;
 import com.ali.englishlearning.utils.Algo;
 import com.ali.englishlearning.utils.AlgoAdapter;
@@ -46,22 +47,32 @@ public class CoursList extends AppCompatActivity implements AlgoListener {
             String courseName = "cours-" + i + ".json";
             String filePath = "Cours_A1/cours-" + i + "/" + courseName; // Kurs yolu düzəldildi
 
+
             // Kursları əlavə edirik
             courses.add(new Course(courseName, filePath));
         }
 
-        // Kursların məlumatlarını yoxlayırıq
-        for (Course course : courses) {
-            Log.d("Course", "Course Name: " + course.getCourseName() + ", File Path: " + course.getCoursePath());
-        }
 
         ArrayList<Algo> arrayList = new ArrayList<>();
         try {
             String[] jsonDirs = getAssets().list("Cours_A1"); // 'Cours_A1' qovluğunu oxuyuruq
             if (jsonDirs != null) {
                 for (String dirName : jsonDirs) {
-                    if (dirName.startsWith("cours-")) { // 'cours-' ilə başlayan qovluqları tapırıq
+                    if (dirName.startsWith("cours-") || dirName.startsWith("pernouns")) { // 'cours-' ilə başlayan qovluqları tapırıq
                         String[] jsonFiles = getAssets().list("Cours_A1/" + dirName); // Həmin qovluqdakı faylları oxuyuruq
+                        String[] jsonFiles2 = getAssets().list("Cours_A1/" + dirName);
+                        for (String filename2 : jsonFiles2){
+                            if (filename2.endsWith(".json")){
+                                String courseName = filename2.replace(".json","").toUpperCase();
+                                arrayList.add(new Algo(
+                                        R.drawable.cours1,
+                                        courseName,
+                                        Pernouns.class,
+                                        "Cours_A1/"+ dirName +"/" + filename2
+                                ));
+                            }
+                        }
+
                         for (String fileName : jsonFiles) {
                             if (fileName.endsWith(".json")) {
                                 String courseName = fileName.replace(".json", "").replace("-", " ").toUpperCase();

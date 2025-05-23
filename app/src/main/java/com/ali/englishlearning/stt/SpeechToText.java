@@ -323,11 +323,6 @@ public class SpeechToText extends AppCompatActivity implements RecognitionListen
     @Override
     public void onResult(String hypothesis) {
 
-//        if (hypothesis != null && !hypothesis.trim().isEmpty()) {
-//            fullTranscription.append(hypothesis.trim()).append(" ");
-//            updateDisplay();
-//        }
-
 
         if (hypothesis != null && !hypothesis.trim().isEmpty()) {
             // Müvafiq "text":"..." hissələrini regex ilə tap
@@ -482,7 +477,7 @@ public class SpeechToText extends AppCompatActivity implements RecognitionListen
     private List<SentenceItem> loadSentencesFromJson() {
         List<SentenceItem> list = new ArrayList<>();
         try {
-            InputStream is = getAssets().open("Cours_A1/cours-1/sentences1.json");
+            InputStream is = getAssets().open("Sentence/sentences1.json");
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);

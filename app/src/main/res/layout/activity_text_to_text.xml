@@ -8,7 +8,7 @@
     android:background="@drawable/background16"
     tools:context=".textotext.TextToText">
 
-    <!-- Başlıq -->
+
     <TextView
         android:id="@+id/textTop"
         android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="88dp"
         android:text="Cümlə"
-        android:textColor="@color/darkcolor"
+        android:textColor="@color/white"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -43,20 +43,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
-        android:textColor="@android:color/holo_red_dark"
+        android:textColor="@color/blue"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/metin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="12dp"/>
 
-    <!-- Alt başlıq -->
 
-    <!-- İstifadəçi cavab üçün -->
-
-    <!-- Nəticə düyməsi -->
-
-    <!-- Növbəti düymə -->
 
     <TextView
         android:id="@+id/textBotton"
@@ -64,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="128dp"
         android:text="Mətni ingiliscə yazın"
-        android:textColor="@color/yelow"
+        android:textColor="@color/blue"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,9 +70,9 @@
         android:id="@+id/editTextText"
         android:layout_width="0dp"
         android:layout_height="100dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="8dp"
         android:background="@android:drawable/edit_text"
         android:hint="Cavabınızı daxil edin"
         android:inputType="text"

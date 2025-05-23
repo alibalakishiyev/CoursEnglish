@@ -223,7 +223,6 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int i) {
                     finish();
 
-
                 }
             });
             materialAlertDialogBuilder.show();

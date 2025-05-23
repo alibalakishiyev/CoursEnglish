@@ -21,6 +21,9 @@
         android:theme="@style/Theme.EnglishLearning"
         tools:targetApi="31">
         <activity
+            android:name=".cours.Pernouns"
+            android:exported="false" />
+        <activity
             android:name=".textotext.TextToText"
             android:exported="false" />
         <activity

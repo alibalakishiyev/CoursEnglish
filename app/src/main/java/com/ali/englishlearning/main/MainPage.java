@@ -79,10 +79,8 @@ public class MainPage extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int i) {
 
-
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     finish();
-
 
                 }
             });
